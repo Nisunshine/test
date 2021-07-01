@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td style="width: 100px;height: 30px">注册邮箱：</td><td ><input type="text" id="email" name="email"/><span></span></td>
+    </tr>
+    <tr>
+        <td style="width: 100px;height: 30px">用户名：</td><td><input type="text" name="name"/></td>
+    </tr>
+    <tr>
+        <td style="width: 100px;height: 30px"> 密码：</td><td><input type="password" name="pwd"></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="注册"></td>
+    </tr>
+    <script type="text/javascript">
+        $(function () {
+            $("#email").blur(function () {
+                $.ajax({
+                    url:"hello",
+                    type:"get",
+                    data:"email="+$(this).val(),
+                    dataType:"text",
+                    success:function (result) {
+                        if(result == 1){
+                            $("span").html("该邮箱已注册！").css("color","red");
+                        } else {
+                            $("span").html("可以使用！").css("color","green");
+                        }
+                    }
+                })
+            })
+        })
+        // var xhr = new XMLHttpRequest()
+        // var el = document.getElementById("email");
+        // function checkel() {
+        //     xhr.open("post","hello",true);
+        //     xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        //     xhr.send("email="+el.value);
+        //     xhr.onreadystatechange=callback;
+        // }
+        // function callback() {
+        //     if(xhr.readyState == 4 && xhr.status == 200){
+        //         var result = xhr.responseText;
+        //         if(result == 1){
+        //             el.nextElementSibling.innerHTML="<span style='color:red'>该邮箱已注册！</span>";
+        //         }else{
+        //             el.nextElementSibling.innerHTML="<span style='color:green'>可以使用！</span>";
+        //         }
+        //     }
+        // }
+    </script>
+</table>
+</body>
+</html>

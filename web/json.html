@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        table,tr,td{border: 1px solid black}
+    </style>
+</head>
+<body>
+<table id="table">
+    <tr>
+        <td>ID</td>
+        <td>姓名</td>
+        <td>住址</td>
+        <td>手机</td>
+    </tr>
+</table>
+<select name="select">
+
+</select>
+<script type="text/javascript">
+    var arr = [
+        {"id":"1","name":"admin","address":"北京市海定区","phone":"12312345678"},
+        {"id":"2","name":"梅西","address":"湖北省武汉市","phone":"12332145678"},
+        {"id":"3","name":"詹姆斯","address":"四川省成都市","phone":"15512345678"},
+        {"id":"4","name":"塔姆","address":"广东省深圳市","phone":"13322345678"}
+    ]
+    $(arr).each(function (i,o) {
+        var $tr = $("<tr><td>"+o.id+"</td><td>"+o.name+"</td><td>"+o.address+"</td><td>"+o.phone+"</td></tr>");
+        $("table").append($tr);
+    })
+    $(arr).each(function (i,d) {
+        var $tr = $("<option>"+d.name+"-"+d.address+"-"+d.phone+"</option>");
+        $("select").append($tr);
+    })
+</script>
+</body>
+</html>
